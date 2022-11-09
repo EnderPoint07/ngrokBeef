@@ -3,6 +3,7 @@ import requests
 import json
 import os
 import ruamel.yaml
+from time import sleep
 
 # Initial thingies
 yaml = ruamel.yaml.YAML(typ='rt')
@@ -41,10 +42,19 @@ with open('beef/config.yaml', 'w') as f:
 # Start beef
 print("starting beef")
 try:
-    os.system("cd beef && ./beef")
+    os.system("cd beef && ./beef &")
+    sleep(10)
     print(f'example url: {tunnel_url}/demos/basic.html')
+   
+    # Keep the script from exiting
+    a = True
+    while a == True:
+        a = True
 
 except KeyboardInterrupt:
     print('stopping ngrok')
     os.system("pkill 'ngrok'")
+
+    print('stopping beef')
+    os.system("pkill -f './beef'")
     sys.exit(0)
