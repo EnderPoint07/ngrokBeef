@@ -14,3 +14,5 @@ running this script basicly runs ```ngrok http 3000```, takes the tunnel url (th
 7. If you get errors then idk fix it ya self or put it in issues tab
 
 # Also it has only been tested on a kali linux vm of mine :)
+
+# ERRORS:
